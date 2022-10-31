@@ -4,3 +4,8 @@
 Price: <%=item.price%><br>
 Supermarket: <%=item.supermarket_name%>
 <%end%>
+<%=form_with url:"/customers/#{@customer.id}", method: :patch, local: true do |f|%>
+<%=f.label :add_item, 'Add an item:'%>
+<%=f.text_field :add_item%>
+<%=f.submit 'Add'%>
+<%end%>
