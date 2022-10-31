@@ -6,4 +6,8 @@ class Item < ApplicationRecord
   def supermarket_name
     supermarket.name
   end
+
+  def customer_count
+    customers.size
+  end
 end

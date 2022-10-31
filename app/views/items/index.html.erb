@@ -1,0 +1,7 @@
+<h1>Item Index</h1>
+<%@items.each do |item|%>
+<h3><%=item.name%></h3>
+Price: <%=item.price%><br>
+Supermarket: <%=item.supermarket_name%>
+Customer count: <%=item.customer_count%>
+<%end%>
