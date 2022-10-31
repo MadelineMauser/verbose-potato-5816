@@ -1,1 +1,6 @@
-<h1>
+<h1><%=@customer.name%><h1>
+<%@customer_items.each do |item|%>
+<h3><%=item.name%><h3><br>
+Price: <%=item.price%><br>
+Supermarket: <%=item.supermarket_name%>
+<%end%>

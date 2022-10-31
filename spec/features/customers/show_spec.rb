@@ -28,5 +28,22 @@ RSpec.feature "Customer Show Page", type: :feature do
       expect(page).to have_content("Supermarket: Mountain Market")
       expect(page).to have_content("Supermarket: Wholesome Fresh")
     end
+    it 'has a form to add an existing item to the customer' do
+      visit "/customers/#{@customer.id}"
+
+      expect(page).to have_content("Add an item:")
+      expect(page).to have_field(":add_item")
+    end
+    it 'redirects and shows the added item when the form is submitted with a valid item id' do
+      @item_3 = @supermarket_1.items.create!(name: 'Steak', price: 10)
+
+      visit "/customers/#{@customer.id}"
+      fill_in ':add_item', with: "#{@item_3.id}"
+      click_button 'Add'
+
+      expect(page).to have_current_path("/customers/#{@customer.id}")
+      expect(page).to have_content("#{@item_3.name}")
+      expect(page).to have_content("Price: #{@item_3.price}")
+    end
   end
 end
